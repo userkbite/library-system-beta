@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+#app .welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    width: 300px;
+    background-color: #711d1e;
+    height: 80px;
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+
+#app ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+#app ul .emprestimo--data {
+    background-color: #eeeeee;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 1rem;
+    width: 300px;
+}
+
+#app ul .emprestimo--data .emprestimo--data--list p {
+    font-size: .8rem;
+    color: rgba(0,0,0,0.5);
+    font-weight: bold;
+}
+
+#app ul .emprestimo--data .emprestimo--data--list span {
+    display: block;
+    margin-top: .1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-emprestimo {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo transparente */
+    z-index: 1;
+    overflow: auto;
+}
+
+/* Estilos para o conteúdo do modal */
+.modal-emprestimo-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Centralizar verticalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px; /* Largura definida como 300px */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    animation-name: modalopen;
+    animation-duration: 0.4s;
+}
+
+/* Animação para abrir o modal */
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/* Estilo para o botão de fechar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo para o formulário dentro do modal */
+.modal-emprestimo-content form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-emprestimo-content form select {
+    width: calc(100% - 10px);
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.modal-emprestimo-content form input[type="text"],
+.modal-emprestimo-content form input[type="date"],
+.modal-emprestimo-content form input[type="submit"] {
+    width: calc(100% - 10px);
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.modal-emprestimo-content form input[type="submit"] {
+    background-color: #711d1e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-emprestimo-content form input[type="submit"]:hover {
+    background-color: #a04545;
+}

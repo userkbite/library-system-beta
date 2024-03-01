@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Library System Beta</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+    </head>
+    <body>
+        <div id="app">
+            <div class="welcome">
+                <p>Bem-vindo(a) a Library System Beta</p>
+                <button onclick="openModal()">Abrir Modal</button>
+            </div>
+            <ul>
+                {% for emprestimo in emprestimos %}
+                <li class="emprestimo--data">
+                    <div class="emprestimo--data--list">
+                        <p>Nome do Aluno</p>
+                        <span>{{ emprestimo.nome_aluno }}</span>
+                        <p>Nome do Livro</p>
+                        <span>{{ emprestimo.nome_livro }}</span>
+                        <p>Curso do Aluno</p>
+                        <span>{{ emprestimo.curso_aluno }}</span>
+                        <p>Data do Emprestimo</p>
+                        <span>{{ emprestimo.data_emprestimo }}</span>
+                        <p>Data de Devoluçâo</p>
+                        <span>{{ emprestimo.data_devolucao }}</span>
+                        <div class="action">
+                            <a href="#" class="btn--delete">Deletar</a>
+                            <a href="#" class="btn--edit">Editar</a>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Modal -->
+        <div id="modalEmprestimo" class="modal-emprestimo">
+            <div class="modal-emprestimo-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Modal Empréstimo</h2>
+                <form action="/" method="post">
+                    <label for="nome_aluno">Nome do Aluno:</label>
+                    <input
+                        type="text"
+                        id="nome_aluno"
+                        name="nome_aluno"
+                        required
+                    />
+                    <label for="nome_livro">Nome do Livro:</label>
+                    <input
+                        type="text"
+                        id="nome_livro"
+                        name="nome_livro"
+                        required
+                    />
+                    <label for="curso_aluno">Curso do Aluno:</label>
+                    <select id="curso_aluno" name="curso_aluno" required>
+                        <option value="">Selecione o curso</option>
+                        <option value="M-TEC Administração">
+                            M-TEC Administração
+                        </option>
+                        <option value="M-TEC Eventos">M-TEC Eventos</option>
+                        <option value="M-TEC Recursos Humanos">
+                            M-TEC Recursos Humanos
+                        </option>
+                        <option value="M-TEC Desenvolvimento de Sistemas">
+                            M-TEC Desenvolvimento de Sistemas
+                        </option>
+                        <option value="Segurança do Trabalho">
+                            Segurança do Trabalho
+                        </option>
+                        <option value="Técnico em Informática">
+                            Técnico em Informática
+                        </option>
+                    </select>
+                    <label for="data_emprestimo">Data de Empréstimo:</label>
+                    <input
+                        type="date"
+                        id="data_emprestimo"
+                        name="data_emprestimo"
+                        required
+                    />
+                    <label for="data_devolucao">Data de Devolução:</label>
+                    <input
+                        type="date"
+                        id="data_devolucao"
+                        name="data_devolucao"
+                        required
+                    />
+                    <input type="submit" value="Enviar" />
+                </form>
+            </div>
+        </div>
+
+        <script>
+            // Função para abrir o modal
+            function openModal() {
+                document.getElementById("modalEmprestimo").style.display =
+                    "block";
+            }
+
+            // Função para fechar o modal
+            function closeModal() {
+                document.getElementById("modalEmprestimo").style.display =
+                    "none";
+            }
+
+            // Fechar o modal quando o usuário clicar fora dele
+            window.onclick = function (event) {
+                var modal = document.getElementById("modalEmprestimo");
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        </script>
+    </body>
+</html>
